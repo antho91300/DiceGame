@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+    color: rgb(44, 43, 43);
+}
+
+body {
+    background-image: url(../img/photos/joel-jasmin-forestbird-xzPMUMDDsfk-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main {
+    background-color: white;
+    margin: 2vh;
+    height: 94vh;
+    width: calc((100vw)-(4vh));
+    padding: 1vh 15vw;
+    display: grid;
+    grid-gap: 2vh;
+    grid-template-columns: 1fr .8fr 1fr;
+    grid-template-rows: .5fr 1fr 2fr;
+    grid-template-areas: "header header header"
+                         "scores scores scores"
+                         "player1 actions player2";
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+    color: currentColor;
+}
+
+/*-- Grid Desktop Layout --*/
+
+.header {
+    grid-area: header;
+    background-color: aqua;
+    border-radius: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+}
+
+.scores {
+    grid-area: scores;
+    background-color: lime;
+    border-radius: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.player1 {
+    grid-area: player1;
+    background-color: rgba(255, 0, 0, 0.281);
+}
+
+.actions {
+    grid-area: actions;
+    background-color: yellow;
+    border-radius: 2vh;
+}
+
+.player2 {
+    grid-area: player2;
+    background-color: rgba(255, 0, 0, 0.281);
+}
+
+/*-- Grid Mobile Layout --*/
+
+@media screen and (max-width: 560px) {
+    main {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1.5fr 4fr 8fr;
+        grid-template-areas: "header"
+                             "scores"
+                             "actions";
+    }
+
+    .header {
+        grid-area: header;
+    }
+    
+    .scores {
+        grid-area: scores;
+    }
+    
+    .player1 {
+        grid-area: scores;
+    }
+    
+    .actions {
+        grid-area: actions;
+    }
+    
+    .player2 {
+        grid-area: scores;
+    }
+}
+
+/*-- Style --*/
+
+a.btn {
+    background-color: blueviolet;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.title {
+    grid-row: 1;
+    grid-column: 1 / 3;
+    text-align: center;
+}
+
+.new-game {
+    grid-row: 2;
+    grid-column: 1;
+    text-align: center;
+}
+
+.rules {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: center;
+}
+
+.player1-info {
+    grid-row: 1;
+    grid-column: 1;
+    text-align: center;
+    align-self: center;
+}
+
+.player2-info {
+    grid-row: 1;
+    grid-column: 3;
+    text-align: center;
+    align-self: center;
+}
+
+.current {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
+    align-self: center;
+}
+
+.current h2 {
+    font-size: 2em;
+    margin: 2vh;
+}
+
+.current-label {
+    margin: 7vh 0 0 0;
+    font-size: 1.5em;
+}
+
+.current-score {
+    font-size: 1.5em;
+    margin: .5em;
+}
+
+.player-name {
+    font-size: 1.8em;
+    margin: 2vh;
+}
+
+.player-score {
+    font-size: 2.5em;
+    margin: 2vh;
+}
