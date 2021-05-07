@@ -295,6 +295,7 @@ input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
 @media screen and (max-width: 768px) {
     main {
         display: grid;
+        height: 90vh;
         padding: 2vw;
         grid-gap: 10px;
         grid-template-columns: 1fr ;
