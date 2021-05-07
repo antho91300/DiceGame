@@ -33,20 +33,28 @@ a:hover {
     color: currentColor;
 }
 
+a.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+}
+
 /*-- Grid Desktop Layout --*/
 
 .header {
     grid-area: header;
-    background-color: aqua;
+    background-color: #c6a05a8c;
     border-radius: 2vh;
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 .scores {
     grid-area: scores;
-    background-color: lime;
+    background-color: #E3BA7D;
     border-radius: 2vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -55,18 +63,22 @@ a:hover {
 
 .player1 {
     grid-area: player1;
-    background-color: rgba(255, 0, 0, 0.281);
+    display: grid;
+    position: relative;
 }
 
 .actions {
     grid-area: actions;
-    background-color: yellow;
     border-radius: 2vh;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr .3fr .3fr;
 }
 
 .player2 {
     grid-area: player2;
-    background-color: rgba(255, 0, 0, 0.281);
+    display: grid;
+    position: relative;
 }
 
 /*-- Grid Mobile Layout --*/
@@ -106,29 +118,44 @@ a:hover {
 /*-- Style --*/
 
 a.btn {
-    background-color: blueviolet;
+    background-color: #5F2914;
     font-weight: 700;
     font-size: 1.1em;
     padding: 5px;
     border-radius: 10px;
+    color: white;
 }
 
 .title {
     grid-row: 1;
     grid-column: 1 / 3;
     text-align: center;
+    margin: 2vh;
 }
 
 .new-game {
     grid-row: 2;
     grid-column: 1;
     text-align: center;
+    align-self: center;
 }
 
 .rules {
     grid-row: 2;
     grid-column: 2;
     text-align: center;
+    align-self: center;
+}
+
+#goal-description {
+    grid-row: 3;
+    grid-column: 1 / 3;
+    text-align: center;
+    align-self: center;
+    margin: .5em;
+    font-size: 1.5em;
+    font-weight: 700;
+    display: none;
 }
 
 .player1-info {
@@ -175,4 +202,114 @@ a.btn {
 .player-score {
     font-size: 2.5em;
     margin: 2vh;
+}
+
+.dice-area {
+    grid-row: 1;
+    margin: auto;
+    align-self: center;
+}
+
+.roll {
+    grid-row: 2;
+    text-align: center;
+    align-self: center;
+}
+
+.hold {
+    grid-row: 3;
+    text-align: center;
+    align-self: center;
+}
+
+.avatar-zone {
+    width: 22vw;
+    margin: auto;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.playing {
+    border: 4px solid #5F2914;
+    background-color: #5F2914;
+    border-radius: 2vh;
+    color: white;
+}
+
+/*-- Rules Modal Style --*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 2vh;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(48, 47, 47);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:not(:focus):not(:placeholder-shown):invalid {
+    border-color: red;
+}
+
+input#p1-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError1 {
+    display: block; 
+}
+
+input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
+    display: block; 
+}
+
+/*-- New Game Modal Style --*/
+
+.inputError1, .inputError2 {
+    display: none;
+    color: red;
+    font-size: .7em;
+    font-weight: 700;
+}
+
+#startGame {
+    background-color: #5F2914;
+    font-size: 1em;
+    font-weight: 700;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 1vw;
+    color: white;
 }
