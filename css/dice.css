@@ -2,6 +2,12 @@
     --diceSize: 5vw;
 }
 
+@media screen and (max-width: 568px) {
+    :root{
+        --diceSize: 10vw;
+    }
+}
+
 .dice-area {
     height: var(--diceSize);
     width: var(--diceSize);
@@ -92,8 +98,8 @@
 
 /*-- Animation effet dés qui roule --*/
 .rolling {
-	-webkit-animation: roll-diag 0.4s linear 2 both;
-	        animation: roll-diag 0.4s linear 2 both;
+	-webkit-animation: roll-diag 0.6s linear 1 both;
+	        animation: roll-diag 0.6s linear 1 both;
 }
 
 @-webkit-keyframes roll-diag {
