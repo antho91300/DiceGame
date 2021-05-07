@@ -330,10 +330,12 @@ input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
     .avatar {
         z-index: 0;
         border: 2px solid transparent;
+        display: none;
     }
 
     .playing {
         z-index: 2;
+        display: block;
     }
 }
 
