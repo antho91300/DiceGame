@@ -113,7 +113,7 @@
     <!-- New Game Modal -->
     <div id="startGameModal" class="modal">
 
-        <div class="modal-content">
+        <div class="modal-content center">
             <span class="close closeNewGame">&times;</span>
             <h3 class="center">Nouvelle Partie :</h3>
             <form id="newGameForm">
@@ -131,7 +131,7 @@
                 <h4>Condition de victoire :</h4>
                 <div>
                     <label for="goalScore">Score à atteindre : ( entre 50 et 400 )</label>
-                    <input type="number" name="goalScore" min="50" max="400" step="10" id="goalScore" required>
+                    <input type="number" name="goalScore" min="10" max="400" step="10" id="goalScore" required>
                     <p class="inputError"></p>
                 </div>
                 <a href="" id="startGame">Démarrer la partie</a>
@@ -143,12 +143,12 @@
     <!-- EndGame Modal -->
     <div id="winnerModal" class="modal">
 
-        <div class="modal-content">
+        <div class="modal-content center">
             <span class="close closeWinModal">&times;</span>
             <h2 class="victory-title center">Victoire !!!!</h2>
-            <p class="victory-text">C'est donc une victoire pour <span id="winner"></span> !</p>
-            <img src="./img/avatars/victory.gif" class="center" alt="victory dance">
-            <a href="" id="restartGame">Démarrer la partie</a>
+            <p class="victory-text">C'est donc une victoire pour <b><span id="winner"></span></b> !</p>
+            <p><img src="./img/avatars/victory.gif" class="center" alt="victory dance"></p>
+            <a href="" id="restartGame">Rejouer une partie</a>
             
         </div>
   

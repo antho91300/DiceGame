@@ -39,6 +39,7 @@ function diceAnimation(face) {
     } , 600);
 }
 
+// Détermine la nouvelle face aléatoirement, puis anime le dé
 function roll() {
   let face = Math.floor(Math.random() * 6) + 1 ;
   diceAnimation(face);
@@ -50,7 +51,7 @@ function displayWinner(name) {
   const restartGame = document.getElementById("restartGame");
   document.getElementById('winner').innerHTML = name;
   winnerModal.style.display = "block";
-  restartGame.onclick = () => {
+  restartGame.onclick = (e) => {
     e.preventDefault();
     player1.score = 0;
     player2.score = 0;
@@ -62,32 +63,40 @@ function checkVictory() {
   if ( player === 1){
     if ( ( currentScore + player1.score ) >= goal ) {
       displayWinner(player1.pseudo);
+      currentScore = 0;
+      player1.score = 0;
+      player2.score = 0;
     }
   }else if ( player === 2){
     if ( ( currentScore + player2.score ) >= goal ) {
       displayWinner(player2.pseudo);
+      currentScore = 0;
+      player1.score = 0;
+      player2.score = 0;
     }
   }
 }
 
 function playOnce() {
   let result = roll();
-  if (result != 1) {
-    currentScore += result;
-    currentScoreDisplay.textContent = currentScore; 
-    checkVictory();
-  }else {
-    currentScoreDisplay.textContent = 0;
-    currentScore = 0;
-    if (player === 1) {
-      player++;
-      //playOnce(); /* Relance immédiatement pour le joueur suivant */
+  setTimeout( () => {
+    if (result != 1) {
+      currentScore += result;
+      currentScoreDisplay.textContent = currentScore; 
+      checkVictory();
     }else {
-      player--;
-      //playOnce(); /* Relance immédiatement pour le joueur suivant */
+      currentScoreDisplay.textContent = 0;
+      currentScore = 0;
+      if (player === 1) {
+        player++;
+        //playOnce(); /* Relance immédiatement pour le joueur suivant */
+      }else {
+        player--;
+        //playOnce(); /* Relance immédiatement pour le joueur suivant */
+      }
+      showPlayer(player);
     }
-    showPlayer(player);
-  }
+  }, 600);
 }
 
 function showPlayer(number){
@@ -105,7 +114,7 @@ function showPlayer(number){
 }
 
 export function newGame() {
-  if (!player1.name && !player2.name){
+  if (!player1.pseudo && !player2.pseudo){
     let player1Name = document.getElementById('p1-name').value;
     let player2Name = document.getElementById('p2-name').value;
     player1.pseudo = player1Name;

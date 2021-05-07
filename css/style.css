@@ -81,40 +81,6 @@ a.isDisabled {
     position: relative;
 }
 
-/*-- Grid Mobile Layout --*/
-
-@media screen and (max-width: 560px) {
-    main {
-        display: grid;
-        grid-gap: 10px;
-        grid-template-columns: 1fr ;
-        grid-template-rows: 1.5fr 4fr 8fr;
-        grid-template-areas: "header"
-                             "scores"
-                             "actions";
-    }
-
-    .header {
-        grid-area: header;
-    }
-    
-    .scores {
-        grid-area: scores;
-    }
-    
-    .player1 {
-        grid-area: scores;
-    }
-    
-    .actions {
-        grid-area: actions;
-    }
-    
-    .player2 {
-        grid-area: scores;
-    }
-}
-
 /*-- Style --*/
 
 a.btn {
@@ -312,4 +278,67 @@ input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
     border: none;
     border-radius: 1vw;
     color: white;
+}
+
+#restartGame {
+    background-color: #5F2914;
+    font-size: 1em;
+    font-weight: 700;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 1vw;
+    color: white;
+}
+
+/*-- Grid Mobile Layout --*/
+
+@media screen and (max-width: 768px) {
+    main {
+        display: grid;
+        padding: 2vw;
+        grid-gap: 10px;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1.5fr 3fr 2fr 4fr;
+        grid-template-areas: "header"
+                             "scores"
+                             "player"
+                             "actions";
+    }
+
+    .header {
+        grid-area: header;
+    }
+    
+    .scores {
+        grid-area: scores;
+    }
+    
+    .player1 {
+        grid-area: player;
+    }
+    
+    .actions {
+        grid-area: actions;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1fr .8fr .8fr;
+    }
+    
+    .player2 {
+        grid-area: player;
+    }
+
+    .avatar {
+        z-index: 0;
+        border: 2px solid transparent;
+    }
+
+    .playing {
+        z-index: 2;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    * {
+        font-size: 11px;
+    }
 }
