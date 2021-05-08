@@ -42,7 +42,6 @@ startGameBtn.onclick = (e) => {
     e.preventDefault();
     let status = document.getElementById('newGameForm').checkValidity();
     document.getElementById('newGameForm').reportValidity();
-    console.log(status);
     if (status){
         game.newGame();
     }    

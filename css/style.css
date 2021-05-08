@@ -198,11 +198,25 @@ a.btn {
     border-radius: 30px;
 }
 
+#avatar-p1-lost, #avatar-p2-lost {
+    display: none;
+    position: absolute;
+    left: 0;
+    margin: auto;
+    width: 90%;
+    z-index: 5;
+}
+
 .playing {
     border: 4px solid #5F2914;
     background-color: #5F2914;
     border-radius: 2vh;
     color: white;
+}
+
+.greyscale {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%);
 }
 
 /*-- Rules Modal Style --*/

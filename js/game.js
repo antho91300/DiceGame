@@ -85,15 +85,15 @@ function playOnce() {
       currentScoreDisplay.textContent = currentScore; 
       checkVictory();
     }else {
+      if (player === 1) {
+        document.getElementById('avatar-p1-lost').style.display = "inline-block";
+        player++;
+      }else {
+        document.getElementById('avatar-p2-lost').style.display = "inline-block";
+        player--;
+      }
       currentScoreDisplay.textContent = 0;
       currentScore = 0;
-      if (player === 1) {
-        player++;
-        //playOnce(); /* Relance immédiatement pour le joueur suivant */
-      }else {
-        player--;
-        //playOnce(); /* Relance immédiatement pour le joueur suivant */
-      }
       showPlayer(player);
     }
   }, 600);
@@ -102,13 +102,17 @@ function playOnce() {
 function showPlayer(number){
   if ( number % 2 === 0) {
     document.getElementById('avatar-p2').classList.add('playing');
+    document.getElementById('avatar-p2').classList.remove('greyscale');
     document.getElementById('player2-name').classList.add('playing');
     document.getElementById('avatar-p1').classList.remove('playing');
+    document.getElementById('avatar-p1').classList.add('greyscale');
     document.getElementById('player1-name').classList.remove('playing');
   }else {
     document.getElementById('avatar-p1').classList.add('playing');
+    document.getElementById('avatar-p1').classList.remove('greyscale');
     document.getElementById('player1-name').classList.add('playing');
     document.getElementById('avatar-p2').classList.remove('playing');
+    document.getElementById('avatar-p2').classList.add('greyscale');
     document.getElementById('player2-name').classList.remove('playing');
   }
 }
@@ -148,6 +152,8 @@ function startGame() {
 
 rollBtn.onclick = (e) => {
   e.preventDefault();
+  document.getElementById('avatar-p1-lost').style.display = "none";
+  document.getElementById('avatar-p2-lost').style.display = "none";
   playOnce();
 }
 

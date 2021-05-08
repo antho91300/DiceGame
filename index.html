@@ -39,6 +39,7 @@
         <div class="player1">
             <div class="avatar-zone">
                 <img class="avatar" id="avatar-p1" src="./img/avatars/player1.svg" alt="player1 avatar">
+                <img class="avatar" id="avatar-p1-lost" src="./img/avatars/croix.png" alt="player1 avatar">
             </div>
         </div>
         <div class="actions">
@@ -89,6 +90,7 @@
         <div class="player2">
             <div class="avatar-zone">
                 <img class="avatar" id="avatar-p2" src="./img/avatars/player2.svg" alt="player2 avatar">
+                <img class="avatar" id="avatar-p2-lost" src="./img/avatars/croix.png" alt="player1 avatar">
             </div>
         </div>
     </main>
@@ -131,7 +133,7 @@
                 <h4>Condition de victoire :</h4>
                 <div>
                     <label for="goalScore">Score à atteindre : ( entre 50 et 400 )</label>
-                    <input type="number" name="goalScore" min="50" max="400" step="10" id="goalScore" required>
+                    <input type="number" name="goalScore" min="50" max="400" id="goalScore" required>
                     <p class="inputError"></p>
                 </div>
                 <a href="" id="startGame">Démarrer la partie</a>
