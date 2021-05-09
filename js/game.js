@@ -16,6 +16,7 @@ rollBtn.disabled = true;
 holdBtn.disabled = true;
 let currentScore = 0;
 let player;
+let gameStarted;
 
 
 // Affichage de la face demandée :
@@ -46,10 +47,12 @@ function roll() {
   return face;
 }
 
+// Affiche le vainqueur de la partie
 function displayWinner(name) {
   const winnerModal = document.getElementById("winnerModal");
   const restartGame = document.getElementById("restartGame");
   document.getElementById('winner').innerHTML = name;
+  gameStarted = false;
   winnerModal.style.display = "block";
   restartGame.onclick = (e) => {
     e.preventDefault();
@@ -59,31 +62,30 @@ function displayWinner(name) {
   }
 }
 
+// Vérifie si la condition de victoire est remplie
 function checkVictory() {
-  if ( player === 1){
-    if ( ( currentScore + player1.score ) >= goal ) {
+  if ( player1.score >= goal ) {
       displayWinner(player1.pseudo);
       currentScore = 0;
       player1.score = 0;
       player2.score = 0;
-    }
-  }else if ( player === 2){
-    if ( ( currentScore + player2.score ) >= goal ) {
+    }else if ( player2.score >= goal ) {
       displayWinner(player2.pseudo);
       currentScore = 0;
       player1.score = 0;
       player2.score = 0;
     }
   }
-}
 
+// Lancer de dé
 function playOnce() {
+  document.getElementById('avatar-p1-lost').style.display = "none";
+  document.getElementById('avatar-p2-lost').style.display = "none";
   let result = roll();
   setTimeout( () => {
     if (result != 1) {
       currentScore += result;
       currentScoreDisplay.textContent = currentScore; 
-      checkVictory();
     }else {
       if (player === 1) {
         document.getElementById('avatar-p1-lost').style.display = "inline-block";
@@ -99,6 +101,7 @@ function playOnce() {
   }, 600);
 }
 
+// Mise en relief du joueur actuel
 function showPlayer(number){
   if ( number % 2 === 0) {
     document.getElementById('avatar-p2').classList.add('playing');
@@ -117,6 +120,24 @@ function showPlayer(number){
   }
 }
 
+//Transfert des points vers le score global
+function holdScore(){
+  if (player === 1) {
+    player1.score += currentScore;
+    checkVictory();
+    player = 2;
+  }else {
+    player2.score += currentScore;
+    checkVictory();
+    player = 1;
+  }
+  currentScore = 0;
+  currentScoreDisplay.textContent = currentScore;
+  displayScores();
+  showPlayer(player);
+}
+
+// Nouvelle partie
 export function newGame() {
   if (!player1.pseudo && !player2.pseudo){
     let player1Name = document.getElementById('p1-name').value;
@@ -136,46 +157,59 @@ export function newGame() {
   startGame();
 }
 
+// Actualisation des scores
 function displayScores(){
   player1Score.textContent = player1.score;
   player2Score.textContent = player2.score;
 }
 
+// Lancement de la partie
 function startGame() {
   currentScoreDisplay.textContent = 0;
   player1Score.textContent = 0;
   player2Score.textContent = 0;
   player = Math.floor(Math.random() * 2) + 1;
+  gameStarted = true;
   showPlayer(player);
   displayScores();
 }
 
+//Bouton Lancer le dé
 rollBtn.onclick = (e) => {
   e.preventDefault();
-  document.getElementById('avatar-p1-lost').style.display = "none";
-  document.getElementById('avatar-p2-lost').style.display = "none";
   playOnce();
 }
 
+//Bouton Valider Score
 holdBtn.onclick = (e) => {
   e.preventDefault();
-  if (player === 1) {
-    player1.score += currentScore;
-    player = 2;
-  }else {
-    player2.score += currentScore;
-    player = 1;
-  }
-  currentScore = 0;
-  currentScoreDisplay.textContent = currentScore;
-  displayScores();
-  showPlayer(player);
+  holdScore();
 }
 
+//Jeu au clavier
+document.addEventListener('keypress', (e) => {
+  if (gameStarted) {
+    let key = e.key;
+    console.log(key);
+    switch (key) {
+      case " ":
+        playOnce();
+        break;
+      case "Enter":
+        holdScore();
+        break;
+      default:
+        return;
+    }
+  }
+})
+
+// Fermeture des modals
 closeWinModal.onclick = function() {
   winnerModal.style.display = "none";
 }
 
+// Fermeture des modals si clic en-dehors
 window.onclick = function(event) {
   if (event.target == winnerModal) {
       winnerModal.style.display = "none";

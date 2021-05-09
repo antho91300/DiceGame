@@ -352,6 +352,11 @@ input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
         z-index: 2;
         display: block;
     }
+
+    .enter,
+    .space {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 568px) {
