@@ -1,4 +1,5 @@
 import * as game from "./game.js";
+import * as form from "./formValidation.js";
 
 /*-- Rules Modal --*/
 let rulesModal = document.getElementById("rulesModal");
@@ -40,9 +41,10 @@ window.onclick = function(event) {
 
 startGameBtn.onclick = (e) => {
     e.preventDefault();
-    let status = document.getElementById('newGameForm').checkValidity();
-    document.getElementById('newGameForm').reportValidity();
-    if (status){
+    console.log(form.validForm());
+    if (form.validForm()) {
         game.newGame();
-    }    
+    }
+    //game.newGame();
+
 }

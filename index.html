@@ -120,25 +120,28 @@
         <div class="modal-content center">
             <span class="close closeNewGame">&times;</span>
             <h3 class="center">Nouvelle Partie :</h3>
-            <form id="newGameForm">
+            <form id="newGameForm" novalidate>
                 <h4>Joueurs :</h4>
                 <div>
                     <label for="p1-name">Pseudo du joueur 1 :</label>
-                    <input type="text" name="p1-name" id="p1-name" maxlength="10" required>
-                    <p class="inputError1">Le pseudo doit être composé moins de 1O caractères</p>
+                    <input type="text" name="p1-name" id="p1-name">
+                    <p class="error" id="p1-error">Le pseudo doit être composé de 1O caractères maximum</p>
                 </div>
                 <div>
                     <label for="p2-name">Pseudo du joueur 2 :</label>
-                    <input type="text" name="p2-name" id="p2-name" maxlength="10" required>
-                    <p class="inputError2">Le pseudo doit être composé moins de 1O caractères</p>
+                    <input type="text" name="p2-name" id="p2-name">
+                    <p class="error" id="p2-error">Le pseudo doit être composé de 1O caractères maximum</p>
                 </div>
                 <h4>Condition de victoire :</h4>
                 <div>
                     <label for="goalScore">Score à atteindre : ( entre 50 et 400 )</label>
-                    <input type="number" name="goalScore" min="50" max="400" id="goalScore" required>
-                    <p class="inputError"></p>
+                    <input type="number" name="goalScore" min="50" max="400" id="goalScore">
+                    <p class="error" id="goal-error">Saisissez une valeur entre 50 et 400</p>
                 </div>
-                <a href="" id="startGame">Démarrer la partie</a>
+                <div class="btn-div">
+                    <a href="" id="startGame">Démarrer la partie</a>
+                </div>
+                
             </form>
         </div>
   

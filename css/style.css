@@ -259,29 +259,41 @@ a.btn {
     text-align: center;
 }
 
+/* Voici notre composition pour les champs invalides */
+input:invalid{
+    border-color: #900;
+    background-color: #FDD;
+}
+
+input:focus:invalid {
+    outline: none;
+}
+
+/* Voici la mise en forme pour les erreurs */
+.error {
+    width  : 100%;
+    padding: 0;
+    color: red;
+    font-size: .7em;
+    font-weight: 700;
+    display: none;
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.error.active {
+    padding: 0.3em;
+}
+
 input:focus {
     outline: none;
 }
 
-input:not(:focus):not(:placeholder-shown):invalid {
-    border-color: red;
-}
-
-input#p1-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError1 {
-    display: block; 
-}
-
-input#p2-name:not(:focus):not(:placeholder-shown):invalid ~ .inputError2 {
-    display: block; 
-}
-
 /*-- New Game Modal Style --*/
 
-.inputError1, .inputError2 {
-    display: none;
-    color: red;
-    font-size: .7em;
-    font-weight: 700;
+.btn-div {
+    margin: 2vh;
 }
 
 #startGame {
